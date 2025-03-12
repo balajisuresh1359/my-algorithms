@@ -177,16 +177,47 @@ int main() {
 }
 
 // matrix_comparison_results.csv
-// Size,Standard,AlphaBeta,Correctness
-// 5,0.000003,0.000005,1
-// 10,0.000018,0.000019,1
-// 20,0.000101,0.000119,1
-// 50,0.000704,0.000340,1
-// 100,0.002882,0.002431,1
-// 200,0.022706,0.018150,1
-// 500,0.383213,0.285080,1
-// 1000,3.675808,2.708856,1
-// 1500,14.398306,9.713360,1
-// 2000,37.495369,26.228778,1
-// 2500,74.025922,50.163575,1
-// 3000,138.272042,104.693285,1
+// Matrix size 10x10:
+//   Standard: 0.000018 seconds
+//   Alpha-Beta: 0.000019 seconds (0.92x slower) - correct
+
+// Matrix size 20x20:
+//   Standard: 0.000101 seconds
+//   Alpha-Beta: 0.000119 seconds (0.84x slower) - correct
+
+// Matrix size 50x50:
+//   Standard: 0.000704 seconds
+//   Alpha-Beta: 0.000340 seconds (2.07x faster) - correct
+
+// Matrix size 100x100:
+//   Standard: 0.002882 seconds
+//   Alpha-Beta: 0.002431 seconds (1.19x faster) - correct
+
+// Matrix size 200x200:
+//   Standard: 0.022706 seconds
+//   Alpha-Beta: 0.018150 seconds (1.25x faster) - correct
+
+// Matrix size 500x500:
+//   Standard: 0.383213 seconds
+//   Alpha-Beta: 0.285080 seconds (1.34x faster) - correct
+
+// Matrix size 1000x1000:
+//   Standard: 3.675808 seconds
+//   Alpha-Beta: 2.708856 seconds (1.36x faster) - correct
+
+// Matrix size 1500x1500:
+//   Standard: 14.398306 seconds
+//   Alpha-Beta: 9.713360 seconds (1.48x faster) - correct
+
+// Matrix size 2000x2000:
+//   Standard: 37.495369 seconds
+//   Alpha-Beta: 26.228778 seconds (1.43x faster) - correct
+
+// Matrix size 2500x2500:
+//   Standard: 74.025922 seconds
+//   Alpha-Beta: 50.163575 seconds (1.48x faster) - correct
+
+// Matrix size 3000x3000:
+//   Standard: 138.272042 seconds
+//   Alpha-Beta: 104.693285 seconds (1.32x faster) - correct
+

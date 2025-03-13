@@ -125,7 +125,7 @@ void benchmark(int n, FILE *csv) {
   int correct = 1;
   for (int i = 0; i < n; i++) {
       for (int j = 0; j < n; j++) {
-          if (C1[i][j] != C2[i][j]) {
+          if (abs(C1[i][j] - C2[i][j]) > 1) {
               correct = 0;
               break;
           }

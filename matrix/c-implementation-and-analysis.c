@@ -45,7 +45,6 @@ void alpha_beta_matrix_multiplication(int **A, int **B, int **C, int n) {
     double *firstItemOfRowBarSumArows = (double *)malloc(n * sizeof(double));
     double *inverseOfEachSumArows = (double *)malloc(n * sizeof(double));
     double *inverseOfEachSumBcols = (double *)malloc(n * sizeof(double));
-    double *first_item_sub_all = (double *)malloc((n - 1) * sizeof(double));
 
     for (int i = 0; i < n; i++) {
         sumArows[i] = 0;
@@ -64,14 +63,11 @@ void alpha_beta_matrix_multiplication(int **A, int **B, int **C, int n) {
         double fiorbsa_a_idx = firstItemOfRowBarSumArows[a_idx];
         double ioesa_a_idx = inverseOfEachSumArows[a_idx];
 
-        for (int i = 1; i < n; i++) {
-            first_item_sub_all[i - 1] = A[a_idx][i] - A[a_idx][0];
-        }
-
         for (int b_idx = 0; b_idx < n; b_idx++) {
             double beta = 0;
-            for (int i = 0; i < n - 1; i++) {
-                beta += B[i + 1][b_idx] * first_item_sub_all[i];
+            for (int i = 1; i < n; i++) {
+                int b_a = A[a_idx][i] - A[a_idx][0];
+                beta += B[i][b_idx] * b_a;
             }
             double alpha = fiorbsa_a_idx + (beta * ioesa_a_idx * inverseOfEachSumBcols[b_idx]);
             C[a_idx][b_idx] = (int)round(sa_a_idx * sumBcols[b_idx] * alpha);
@@ -83,7 +79,6 @@ void alpha_beta_matrix_multiplication(int **A, int **B, int **C, int n) {
     free(firstItemOfRowBarSumArows);
     free(inverseOfEachSumArows);
     free(inverseOfEachSumBcols);
-    free(first_item_sub_all);
 }
 
 int matrices_are_equal(int **A, int **B, int rows, int cols) {

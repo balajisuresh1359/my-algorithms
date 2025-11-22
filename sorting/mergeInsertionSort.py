@@ -14,6 +14,9 @@ def merge_insertion_sort(array, pending_item_percentage = 0.55):
       min_value = max_value = array[0]
       min_value_ind = max_value_ind = 0
 
+      if min_value == max_value:
+        return
+
       for i, x in enumerate(array[1:], start=1):
           if x < min_value:
               min_value = x

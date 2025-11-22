@@ -36,7 +36,7 @@ def merge_insertion_sort(array, pending_item_percentage = 0.55):
               dsc_array.append(curr_item)
         else:
               pending_items.append(curr_item)
-              if len(pending_items) >= pending_item_size:
+              if len(pending_items) == pending_item_size:
                     (asc_array if len(asc_array) < len(dsc_array) else dsc_array).insert(pending_items)
                     pending_items = []
       
@@ -72,11 +72,17 @@ def merge_insertion_sort(array, pending_item_percentage = 0.55):
 
 if __name__ == "__main__":
     from helpers.array_utils import (generate_random_array, is_the_array_sorted)
-    arr = generate_random_array(10000)
-    arr_copy = arr.copy()
-    import time
-    start = time.time() 
-    merge_insertion_sort(arr)
-    print(time.time() - start)
-    print(is_the_array_sorted(arr, arr_copy))
+    min_val = 10**6
+    for i in range(100):
+        arr = generate_random_array(90000)
+        arr_copy = arr.copy()
+        import time
+        start = time.time() 
+        merge_insertion_sort(arr, pending_item_percentage = i * 0.01)
+        time_taken = time.time() - start
+        if min_val > time_taken:
+            min_val = time_taken
+            percentage = i * 0.01
+        print(is_the_array_sorted(arr, arr_copy))
 
+    print("Max time taken is with pending_item_percentage =", round(percentage, 5), ":", round(min_val, 5))

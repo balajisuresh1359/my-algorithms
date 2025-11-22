@@ -4,12 +4,6 @@ class BST:
     def __init__(self):
         self.root = None
     
-    def insert(self, value, reference = None):
-        if not self.root:
-            self.root = Node(value, reference)
-        else:
-            self.addNode(self.root, value, reference)
-    
     def insert(self, value, reference=None):
         new_node = Node(value, reference)
         if not self.root:

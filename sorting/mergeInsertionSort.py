@@ -6,16 +6,13 @@ from helpers.linkedListForSort import LinkedList
 
 def merge_insertion_sort(array, pending_item_percentage = 0.55):
       input_arr_len = len(array)
-      if input_arr_len == 0 or input_arr_len == 1:
+      if input_arr_len <= 1:
         return
 
       pending_item_size = max(int(input_arr_len * pending_item_percentage), 6)
       
       min_value = max_value = array[0]
       min_value_ind = max_value_ind = 0
-
-      if min_value == max_value:
-        return
 
       for i, x in enumerate(array[1:], start=1):
           if x < min_value:
@@ -24,6 +21,10 @@ def merge_insertion_sort(array, pending_item_percentage = 0.55):
           elif x > max_value:
               max_value = x
               max_value_ind = i
+
+
+      if min_value == max_value:
+        return
 
       asc_array = LinkedList(min_value)
       dsc_array = LinkedList(max_value, 'DESC')

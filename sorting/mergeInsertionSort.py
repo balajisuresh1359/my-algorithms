@@ -6,6 +6,9 @@ from helpers.linkedListForSort import LinkedList
 
 def merge_insertion_sort(array, pending_item_percentage = 0.55):
       input_arr_len = len(array)
+      if input_arr_len == 0 or input_arr_len == 1:
+        return
+
       pending_item_size = max(int(input_arr_len * pending_item_percentage), 6)
       
       min_value = max_value = array[0]
